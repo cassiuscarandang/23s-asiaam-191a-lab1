@@ -24,3 +24,6 @@ header{
     grid-area: content;
 }
 
+.fit-picture {
+    width: 200px;
+}
