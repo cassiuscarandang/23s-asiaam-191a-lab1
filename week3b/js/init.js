@@ -1,3 +1,4 @@
+
 // declare variables
 let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
 
@@ -30,4 +31,15 @@ fetch("map.geojson")
             }).addTo(map);
     })
 
+    function random(number){
+        return Math.floor(Math.random() * (number + 1));
+      }
+      
+      const btn = document.querySelector("button");
+      
+      btn.addEventListener("click", () => {
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        document.body.style.backgroundColor = rndCol;
+      });
+      
 
