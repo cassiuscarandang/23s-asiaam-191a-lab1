@@ -36,12 +36,12 @@ Esri_WorldGrayCanvas.addTo(map);
 function addMarker(data){
     if(data['Is this Restaurant located in the Los Angeles area?'] == "Yes"){
         circleOptions.fillColor = "red"
-        LosAngeles.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Yes</h2>`))
+        LosAngeles.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>In Los Angeles</h2>`))
         createButtons(data.lat,data.lng,data['What is the Restaurant Name?'])
         }
     else{
         circleOptions.fillColor = "blue"
-        nonLosAngeles.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>No</h2>`))
+        nonLosAngeles.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Not in Los Angeles</h2>`))
         createButtons(data.lat,data.lng,data['What is the Restaurant Name?'])
     }
     return data
