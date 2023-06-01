@@ -34,15 +34,15 @@ let Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/r
 Esri_WorldGrayCanvas.addTo(map);
 
 function addMarker(data){
-    if(data['What is the closest cross-intersection of where you live?'] == "Yes"){
+    if(data['Where do you currently live?'] == "On-Campus Housing (Dorms)"){
         circleOptions.fillColor = "red"
-       oncampus.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>On Campus Student</h2>`))
-        createButtons(data.lat,data.lng,data['What is the closest cross-intersection of where you live?'])
+        oncampus.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>On Campus Student</h2>`))
+        createButtons(data.lat,data.lng,data['What are your experiences with housing insecurity and affordability at UCLA?'])
         }
     else{
         circleOptions.fillColor = "blue"
         offcampus.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Off Campus Student</h2>`))
-        createButtons(data.lat,data.lng,data['What is the closest cross-intersection of where you live?'])
+        createButtons(data.lat,data.lng,data['What are your experiences with housing insecurity and affordability at UCLA?'])
     }
     return data
 }
@@ -74,9 +74,9 @@ function processData(results){
         console.log(data)
         addMarker(data)
     })
-    vaccinated.addTo(map) // add our layers after markers have been made
-    nonVaccinated.addTo(map) // add our layers after markers have been made  
-    let allLayers = L.featureGroup([vaccinated,nonVaccinated]);
+    oncampus.addTo(map) // add our layers after markers have been made
+    offcampus.addTo(map) // add our layers after markers have been made  
+    let allLayers = L.featureGroup([oncampus,offcampus]);
     map.fitBounds(allLayers.getBounds());
 }
 
